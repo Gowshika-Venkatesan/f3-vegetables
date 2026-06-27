@@ -13,9 +13,13 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
+  overflow-x: hidden;
   background: #fffaf2;
   color: var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -457,7 +461,7 @@ img { max-width: 100%; display: block; }
 
 .market-header,
 .market-shell {
-  width: min(1480px, calc(100% - 28px));
+  width: min(1440px, calc(100% - 40px));
   margin-inline: auto;
 }
 .market-header {
@@ -1176,5 +1180,249 @@ img { max-width: 100%; display: block; }
     min-height: 40px;
     padding: 0 10px;
     font-size: .9rem;
+  }
+}
+
+/* Final responsive shop layout */
+.top-icon {
+  position: relative;
+  display: inline-grid;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  place-items: center;
+  border-radius: 999px;
+  background: #fff;
+  color: #c80d0d;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 950;
+  vertical-align: -3px;
+}
+.info-icon::before { content: "i"; }
+.clock-icon::before { content: "8"; }
+.phone-icon::before { content: "p"; }
+.sale-icon::before { content: "!"; }
+.social-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  font-weight: 950;
+}
+.social-icons b { font-size: 1rem; line-height: 1; }
+
+.category-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  padding: 20px clamp(16px, 5vw, 72px) 22px;
+  border-bottom: 1px solid #f0e1ef;
+  background: #fff;
+}
+.category-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 164px;
+  min-height: 54px;
+  border: 1px solid #e8e8ea;
+  border-radius: 999px;
+  padding: 8px 18px 8px 10px;
+  background: #fff;
+  color: #42484c;
+  font-weight: 900;
+}
+.category-nav img {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.offer-banner {
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+}
+.offer-banner:nth-child(2n) { background: linear-gradient(135deg, var(--green), var(--green-dark)); }
+.offer-banner:nth-child(3n) { background: linear-gradient(135deg, #ff7a18, #b84a00); }
+
+.filter-pills {
+  flex-wrap: wrap;
+  overflow: visible;
+}
+.filter-pills::-webkit-scrollbar,
+.market-shell .filter-panel::-webkit-scrollbar {
+  display: none;
+}
+.filter-pills,
+.market-shell .filter-panel {
+  scrollbar-width: none;
+}
+
+@media (min-width: 761px) {
+  .market-shell {
+    grid-template-columns: 230px minmax(0, 1fr) 300px;
+  }
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .category-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    padding: 10px;
+  }
+  .category-nav a {
+    min-width: 0;
+    min-height: 42px;
+    gap: 8px;
+    padding: 6px 8px;
+    font-size: .78rem;
+  }
+  .category-nav img {
+    width: 28px;
+    height: 28px;
+  }
+  .market-header {
+    position: sticky;
+    top: 0;
+    z-index: 28;
+    background: #fff;
+  }
+  .market-header button {
+    overflow: hidden;
+    color: transparent;
+    font-size: 0;
+  }
+  .market-header button::before {
+    content: "";
+    width: 17px;
+    height: 17px;
+    border: 2px solid #25312d;
+    border-radius: 999px;
+  }
+  .market-header button::after {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 2px;
+    transform: translate(10px, 10px) rotate(45deg);
+    background: #25312d;
+  }
+  .market-shell {
+    grid-template-columns: 82px minmax(0, 1fr);
+    align-items: start;
+    background: #fff;
+  }
+  .market-products {
+    padding: 10px 8px 0;
+  }
+  .market-shell .filter-panel {
+    top: 57px;
+    gap: 18px;
+    max-height: calc(100vh - 116px);
+    padding: 10px 5px 78px;
+    background: #f4f5f9;
+  }
+  .market-shell .filter-panel button {
+    gap: 5px;
+    min-height: 86px;
+    padding: 5px 2px;
+    font-size: .66rem;
+  }
+  .market-shell .filter-panel button::before {
+    left: -5px;
+  }
+  .market-shell .filter-panel img {
+    width: 45px;
+    height: 45px;
+  }
+  .filter-pills {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 7px;
+    padding-bottom: 8px;
+  }
+  .filter-pills button,
+  .filter-pills select {
+    min-height: 34px;
+    padding: 0 11px;
+    font-size: .72rem;
+    box-shadow: 0 4px 12px rgba(30, 35, 40, 0.06);
+  }
+  .product-search {
+    display: none;
+  }
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 14px;
+  }
+  .product-card {
+    display: block;
+    min-height: 0;
+    border-bottom: 1px dashed #e0e1e6;
+    padding: 0 0 12px;
+  }
+  .product-img {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 8px;
+  }
+  .quick-add {
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    font-size: 1.45rem;
+  }
+  .product-info {
+    padding: 0;
+  }
+  .product-info small {
+    color: #009d64;
+    font-size: .66rem;
+  }
+  .product-info h3 {
+    margin: 5px 0 8px;
+    min-height: 32px;
+    color: #222b28;
+    font-size: .82rem;
+    line-height: 1.2;
+  }
+  .product-info p {
+    display: block;
+    min-height: 33px;
+    margin: 0 0 7px;
+    color: #697570;
+    font-size: .68rem;
+    line-height: 1.32;
+  }
+  .product-info > span {
+    margin-bottom: 5px;
+    font-size: .75rem;
+  }
+  .price-line {
+    display: block;
+    margin: 0;
+  }
+  .price-line strong,
+  .price-line span {
+    display: block;
+    text-align: left;
+  }
+  .price-line strong {
+    color: #222b28;
+    font-size: .82rem;
+  }
+  .price-line span {
+    margin-top: 1px;
+    font-size: .68rem;
+  }
+  .market-shell .basket-panel {
+    display: none;
   }
 }

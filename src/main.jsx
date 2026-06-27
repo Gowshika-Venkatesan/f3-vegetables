@@ -10,7 +10,11 @@ const categories = [
   { name: "Vegetables", label: "Fresh Vegetables", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=900&q=88", note: "Daily cooking" },
   { name: "Leafy Vegetables", label: "Leafy and Seasonings", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=900&q=88", note: "Morning bunches" },
   { name: "Fruits", label: "Fruits", image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=88", note: "Seasonal stock" },
-  { name: "Organic Products", label: "Organic Products", image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=88", note: "Farm sorted" }
+  { name: "Oils", label: "Oils", image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=88", note: "Kitchen essentials" },
+  { name: "Organic Snacks", label: "Organic Snacks", image: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&w=900&q=88", note: "Healthy bites" },
+  { name: "Organic Products", label: "Organic Products", image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=88", note: "Farm sorted" },
+  { name: "Fresh Cuts", label: "Fresh Cuts", image: "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=900&q=88", note: "Ready to cook" },
+  { name: "Flowers", label: "Flowers", image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=88", note: "Pooja daily" }
 ];
 
 const storeSteps = [
@@ -49,7 +53,13 @@ const products = [
   { id: "coriander", name: "Coriander Leaves", tamil: "Kothamalli", category: "Leafy Vegetables", unit: "bunch", price: 12, cut: 16, badge: "8 mins", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=700&q=86" },
   { id: "mint", name: "Mint Leaves", tamil: "Pudina", category: "Leafy Vegetables", unit: "bunch", price: 14, cut: 18, badge: "8 mins", image: "https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=700&q=86" },
   { id: "curry-leaves", name: "Curry Leaves", tamil: "Karuveppilai", category: "Leafy Vegetables", unit: "pack", price: 10, cut: 14, badge: "8 mins", image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=700&q=86" },
-  { id: "spinach", name: "Spinach", tamil: "Pasalai Keerai", category: "Leafy Vegetables", unit: "bunch", price: 22, cut: 28, badge: "Healthy", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=86" }
+  { id: "spinach", name: "Spinach", tamil: "Pasalai Keerai", category: "Leafy Vegetables", unit: "bunch", price: 22, cut: 28, badge: "Healthy", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=86" },
+  { id: "groundnut-oil", name: "Groundnut Oil", tamil: "Kadalai Ennai", category: "Oils", unit: "litre", price: 210, cut: 235, badge: "Cold press", image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=700&q=86" },
+  { id: "gingelly-oil", name: "Gingelly Oil", tamil: "Nallennai", category: "Oils", unit: "litre", price: 260, cut: 290, badge: "Kitchen", image: "https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?auto=format&fit=crop&w=700&q=86" },
+  { id: "banana-chips", name: "Banana Chips", tamil: "Vazhai Chips", category: "Organic Snacks", unit: "pack", price: 85, cut: 100, badge: "Snack", image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=700&q=86" },
+  { id: "millet-cookies", name: "Millet Cookies", tamil: "Thinai Cookies", category: "Organic Snacks", unit: "pack", price: 120, cut: 145, badge: "Organic", image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=700&q=86" },
+  { id: "cut-veg-mix", name: "Cut Veg Mix", tamil: "Cut Kai Mix", category: "Fresh Cuts", unit: "pack", price: 65, cut: 80, badge: "Ready", image: "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=700&q=86" },
+  { id: "pooja-flowers", name: "Pooja Flowers", tamil: "Poo Malai", category: "Flowers", unit: "pack", price: 45, cut: 55, badge: "Morning", image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=86" }
 ];
 
 const defaultOffers = [
@@ -147,10 +157,11 @@ function Layout({ children, cartCount, onOpenCart }) {
   return (
     <>
       <div className="app-strip">
-        <span>About Us</span>
-        <span>8:00 AM - 9:30 PM</span>
-        <span>+91 75028 88200</span>
-        <strong>Use Code: F3FRESH | Free delivery on orders over Rs. 1000</strong>
+        <span><i className="top-icon info-icon" aria-hidden="true" />About Us</span>
+        <span><i className="top-icon clock-icon" aria-hidden="true" />8:00 AM - 9:30 PM</span>
+        <span><i className="top-icon phone-icon" aria-hidden="true" />+91 75028 88200</span>
+        <strong><i className="top-icon sale-icon" aria-hidden="true" />Flash Sale: Fresh vegetables at best prices!</strong>
+        <span className="social-icons" aria-hidden="true"><b>f</b><b>ig</b><b>yt</b></span>
         <span>Customer Support</span>
       </div>
       <header className="pluckk-header">
@@ -169,6 +180,14 @@ function Layout({ children, cartCount, onOpenCart }) {
         </nav>
         <button className="cart-chip" type="button" onClick={onOpenCart}>Cart <strong>{cartCount % 1 === 0 ? cartCount : cartCount.toFixed(1)}</strong></button>
       </header>
+      <nav className="category-nav" aria-label="Shop categories">
+        {categories.slice(0, 6).map((category) => (
+          <Link to={`/products?category=${encodeURIComponent(category.name)}`} key={category.name}>
+            <img src={category.image} alt="" />
+            <span>{category.label}</span>
+          </Link>
+        ))}
+      </nav>
       {children}
       <Footer />
       <nav className="mobile-tabs">
@@ -288,10 +307,10 @@ function ProductsPage({ cart, cartCount, cartTotal, onAdd, onRemove, onOpenCart 
     <Layout cartCount={cartCount} onOpenCart={onOpenCart}>
       <main>
         <section className="market-header">
-          <Link to="/" className="back-link" aria-label="Back to home">‹</Link>
+          <Link to="/" className="back-link" aria-label="Back to home">&lt;</Link>
           <img src={activeCategory.image} alt={categoryTitle} />
           <div><h1>{categoryTitle}</h1><span>{filtered.length} items</span></div>
-          <button type="button" aria-label="Search products">⌕</button>
+          <button type="button" aria-label="Search products">Search</button>
         </section>
         <section className="market-shell">
           <aside className="filter-panel">
