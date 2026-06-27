@@ -5,8 +5,9 @@ React online ordering website for F3 Vegetables, Anna Nagar, Karur.
 ## What This Includes
 
 - Fresh local shop landing page using the F3 logo
-- Daily offers slider
-- Product search and category filters
+- Separate React pages for home, products, contact, and admin
+- Campaign-style daily offers carousel
+- Product search and category filters on the products page
 - Add-to-cart ordering flow
 - Pickup or delivery checkout form
 - WhatsApp order handoff
