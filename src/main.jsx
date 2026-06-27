@@ -7,10 +7,10 @@ const shopPhone = "917502888200";
 const adminCredentials = { username: "f3admin", password: "Fresh@88200" };
 
 const categories = [
-  { name: "Organic Products", label: "Organic", image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=88", note: "Farm sorted" },
-  { name: "Vegetables", label: "Vegetables", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=900&q=88", note: "Daily cooking" },
+  { name: "Vegetables", label: "Fresh Vegetables", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=900&q=88", note: "Daily cooking" },
+  { name: "Leafy Vegetables", label: "Leafy and Seasonings", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=900&q=88", note: "Morning bunches" },
   { name: "Fruits", label: "Fruits", image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=88", note: "Seasonal stock" },
-  { name: "Leafy Vegetables", label: "Leafy Greens", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=900&q=88", note: "Morning bunches" }
+  { name: "Organic Products", label: "Organic Products", image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=88", note: "Farm sorted" }
 ];
 
 const storeSteps = [
@@ -26,12 +26,12 @@ const products = [
   { id: "organic-coconut", name: "Organic Coconut", tamil: "Organic Thengai", category: "Organic Products", unit: "piece", price: 42, cut: 52, badge: "Natural", image: "https://images.unsplash.com/photo-1580984969071-a8da5656c2fb?auto=format&fit=crop&w=700&q=86" },
   { id: "organic-banana", name: "Organic Banana", tamil: "Organic Vazhai Pazham", category: "Organic Products", unit: "dozen", price: 88, cut: 105, badge: "Sweet", image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=700&q=86" },
   { id: "organic-lemon", name: "Organic Lemon", tamil: "Organic Elumichai", category: "Organic Products", unit: "piece", price: 8, cut: 11, badge: "Fresh", image: "https://images.unsplash.com/photo-1587496679742-bad502958fbf?auto=format&fit=crop&w=700&q=86" },
-  { id: "tomato", name: "Tomato", tamil: "Thakkali", category: "Vegetables", unit: "kg", price: 32, cut: 40, badge: "Daily", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=700&q=86" },
-  { id: "brinjal", name: "Brinjal", tamil: "Kathirikai", category: "Vegetables", unit: "kg", price: 44, cut: 54, badge: "Fresh", image: "https://images.unsplash.com/photo-1604914440268-8d352fe4db95?auto=format&fit=crop&w=700&q=86" },
-  { id: "drumstick", name: "Drumstick", tamil: "Murungakkai", category: "Vegetables", unit: "bundle", price: 38, cut: 48, badge: "Popular", image: "https://images.unsplash.com/photo-1597362925123-77861d3fbac7?auto=format&fit=crop&w=700&q=86" },
+  { id: "tomato", name: "Indian Tomato", tamil: "Thakkali", category: "Vegetables", unit: "kg", price: 32, cut: 40, badge: "8 mins", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=700&q=86" },
+  { id: "brinjal", name: "Brinjal", tamil: "Kathirikai", category: "Vegetables", unit: "kg", price: 44, cut: 54, badge: "8 mins", image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=700&q=86" },
+  { id: "drumstick", name: "Drumstick", tamil: "Murungakkai", category: "Vegetables", unit: "bundle", price: 38, cut: 48, badge: "8 mins", image: "https://images.unsplash.com/photo-1603048719539-9ecb4aa395e3?auto=format&fit=crop&w=700&q=86" },
   { id: "small-onion", name: "Small Onion", tamil: "Chinna Vengayam", category: "Vegetables", unit: "kg", price: 72, cut: 88, badge: "Kitchen", image: "https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=700&q=86" },
-  { id: "big-onion", name: "Big Onion", tamil: "Periya Vengayam", category: "Vegetables", unit: "kg", price: 42, cut: 52, badge: "Daily", image: "https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?auto=format&fit=crop&w=700&q=86" },
-  { id: "potato", name: "Potato", tamil: "Urulai Kizhangu", category: "Vegetables", unit: "kg", price: 36, cut: 44, badge: "Daily", image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=700&q=86" },
+  { id: "big-onion", name: "Onion", tamil: "Vengayam", category: "Vegetables", unit: "kg", price: 42, cut: 52, badge: "8 mins", image: "https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?auto=format&fit=crop&w=700&q=86" },
+  { id: "potato", name: "Potato", tamil: "Urulai Kizhangu", category: "Vegetables", unit: "kg", price: 36, cut: 44, badge: "8 mins", image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=700&q=86" },
   { id: "carrot", name: "Carrot", tamil: "Carrot", category: "Vegetables", unit: "kg", price: 58, cut: 70, badge: "Fresh", image: "https://images.unsplash.com/photo-1447175008436-054170c2e979?auto=format&fit=crop&w=700&q=86" },
   { id: "beans", name: "Beans", tamil: "Beans", category: "Vegetables", unit: "kg", price: 68, cut: 84, badge: "Tender", image: "https://images.unsplash.com/photo-1567375698348-5d9d5ae99de0?auto=format&fit=crop&w=700&q=86" },
   { id: "cucumber", name: "Cucumber", tamil: "Vellarikkai", category: "Vegetables", unit: "kg", price: 34, cut: 42, badge: "Cool", image: "https://images.unsplash.com/photo-1604977042946-1eecc30f269e?auto=format&fit=crop&w=700&q=86" },
@@ -45,10 +45,10 @@ const products = [
   { id: "grapes", name: "Grapes", tamil: "Thiratchai", category: "Fruits", unit: "kg", price: 120, cut: 145, badge: "Fresh", image: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=700&q=86" },
   { id: "watermelon", name: "Watermelon", tamil: "Tharpoosani", category: "Fruits", unit: "kg", price: 28, cut: 36, badge: "Seasonal", image: "https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=700&q=86" },
   { id: "mango", name: "Mango", tamil: "Mambazham", category: "Fruits", unit: "kg", price: 140, cut: 170, badge: "Seasonal", image: "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=700&q=86" },
-  { id: "keerai", name: "Fresh Greens", tamil: "Keerai", category: "Leafy Vegetables", unit: "bunch", price: 18, cut: 24, badge: "Morning", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=86" },
-  { id: "coriander", name: "Coriander", tamil: "Kothamalli", category: "Leafy Vegetables", unit: "bunch", price: 12, cut: 16, badge: "Fresh", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=86" },
-  { id: "mint", name: "Mint Leaves", tamil: "Pudina", category: "Leafy Vegetables", unit: "bunch", price: 14, cut: 18, badge: "Aroma", image: "https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=700&q=86" },
-  { id: "curry-leaves", name: "Curry Leaves", tamil: "Karuveppilai", category: "Leafy Vegetables", unit: "pack", price: 10, cut: 14, badge: "Daily", image: "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=700&q=86" },
+  { id: "keerai", name: "Fresh Greens", tamil: "Keerai", category: "Leafy Vegetables", unit: "bunch", price: 18, cut: 24, badge: "8 mins", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=86" },
+  { id: "coriander", name: "Coriander Leaves", tamil: "Kothamalli", category: "Leafy Vegetables", unit: "bunch", price: 12, cut: 16, badge: "8 mins", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=700&q=86" },
+  { id: "mint", name: "Mint Leaves", tamil: "Pudina", category: "Leafy Vegetables", unit: "bunch", price: 14, cut: 18, badge: "8 mins", image: "https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=700&q=86" },
+  { id: "curry-leaves", name: "Curry Leaves", tamil: "Karuveppilai", category: "Leafy Vegetables", unit: "pack", price: 10, cut: 14, badge: "8 mins", image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=700&q=86" },
   { id: "spinach", name: "Spinach", tamil: "Pasalai Keerai", category: "Leafy Vegetables", unit: "bunch", price: 22, cut: 28, badge: "Healthy", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=86" }
 ];
 
@@ -147,8 +147,11 @@ function Layout({ children, cartCount, onOpenCart }) {
   return (
     <>
       <div className="app-strip">
-        <span>Order will be confirmed by F3 Vegetables</span>
-        <span>Karur delivery and pickup available</span>
+        <span>About Us</span>
+        <span>8:00 AM - 9:30 PM</span>
+        <span>+91 75028 88200</span>
+        <strong>Use Code: F3FRESH | Free delivery on orders over Rs. 1000</strong>
+        <span>Customer Support</span>
       </div>
       <header className="pluckk-header">
         <Link className="brand" to="/">
@@ -267,6 +270,9 @@ function ProductsPage({ cart, cartCount, cartTotal, onAdd, onRemove, onOpenCart 
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("featured");
   const allCategories = ["All", ...categories.map((item) => item.name)];
+  const activeCategory = categories.find((item) => item.name === category) || categories[0];
+  const categoryTitle = category === "All" ? "Fresh Vegetables" : activeCategory.label;
+  const quickFilters = ["Filters", "Gourd", "Beans", "Potato", "Type", "Brand", "Customer Ratings", "Sort By"];
   const filtered = useMemo(() => {
     const search = query.toLowerCase().trim();
     const list = products.filter((product) => {
@@ -278,36 +284,42 @@ function ProductsPage({ cart, cartCount, cartTotal, onAdd, onRemove, onOpenCart 
     if (sort === "high") return [...list].sort((a, b) => b.price - a.price);
     return list;
   }, [category, query, sort]);
-  const organicStory = categories.find((item) => item.name === "Organic Products");
   return (
     <Layout cartCount={cartCount} onOpenCart={onOpenCart}>
       <main>
-        <section className="products-top">
-          <div>
-            <p>Products</p>
-            <h1>Choose fresh products on a complete shopping page.</h1>
-            <span>Browse by organic products, vegetables, fruits and leafy vegetables with realistic product cards.</span>
-          </div>
+        <section className="market-header">
+          <Link to="/" className="back-link" aria-label="Back to home">‹</Link>
+          <img src={activeCategory.image} alt={categoryTitle} />
+          <div><h1>{categoryTitle}</h1><span>{filtered.length} items</span></div>
+          <button type="button" aria-label="Search products">⌕</button>
         </section>
-        <section className="organic-note">
-          <img src={organicStory.image} alt="Organic products" />
-          <div><p>Organic Products</p><h2>From harvest partners to your F3 basket.</h2><span>Use this section to explain sourcing, harvest timing, cleaning, sorting and how F3 confirms availability before delivery.</span></div>
-        </section>
-        <section className="product-tools">
-          <input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder="Search tomato, apple, keerai..." />
-          <select value={sort} onChange={(event) => setSort(event.target.value)}>
-            <option value="featured">Featured</option>
-            <option value="low">Price low to high</option>
-            <option value="high">Price high to low</option>
-          </select>
-        </section>
-        <section className="shopping-layout">
+        <section className="market-shell">
           <aside className="filter-panel">
-            <strong>Categories</strong>
-            {allCategories.map((item) => <button className={category === item ? "active" : ""} type="button" key={item} onClick={() => setCategory(item)}>{item}</button>)}
+            {allCategories.filter((item) => item !== "All").map((item) => {
+              const detail = categories.find((entry) => entry.name === item);
+              return (
+                <button className={category === item ? "active" : ""} type="button" key={item} onClick={() => setCategory(item)}>
+                  <img src={detail.image} alt="" />
+                  <span>{detail.label}</span>
+                </button>
+              );
+            })}
           </aside>
-          <div className="product-grid">
-            {filtered.map((product) => <ProductCard product={product} onAdd={onAdd} key={product.id} />)}
+          <div className="market-products">
+            <div className="filter-pills">
+              {quickFilters.map((item) => <button type="button" key={item}>{item}</button>)}
+              <select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort products">
+                <option value="featured">Featured</option>
+                <option value="low">Price low to high</option>
+                <option value="high">Price high to low</option>
+              </select>
+            </div>
+            <div className="product-search">
+              <input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder="Search tomato, coriander, potato..." />
+            </div>
+            <div className="product-grid">
+              {filtered.map((product) => <ProductCard product={product} onAdd={onAdd} key={product.id} />)}
+            </div>
           </div>
           <BasketPanel cart={cart} total={cartTotal} count={cartCount} onRemove={onRemove} onCheckout={onOpenCart} />
         </section>
@@ -336,22 +348,18 @@ function ContactPage({ cartCount, onOpenCart }) {
 }
 
 function ProductCard({ product, onAdd }) {
-  const [quantity, setQuantity] = useState(1);
   return (
     <article className="product-card">
       <div className="product-img">
         <img src={product.image} alt={product.name} />
-        <span>{product.badge}</span>
       </div>
+      <button className="quick-add" type="button" onClick={() => onAdd(product.id, 1)} aria-label={`Add ${product.name}`}>+</button>
       <div className="product-info">
-        <small>{product.category}</small>
-        <h3>{product.name}</h3>
-        <p>{product.tamil}</p>
+        <small>{product.badge}</small>
+        <h3>{product.name} ({product.tamil})</h3>
+        <p>Fresh stock selected for daily home cooking</p>
+        <span>{product.unit}</span>
         <div className="price-line"><strong>{money(product.price)}</strong><span><s>{money(product.cut)}</s> / {product.unit}</span></div>
-        <div className="add-line">
-          <input value={quantity} onChange={(event) => setQuantity(Number(event.target.value))} type="number" min="0.5" step="0.5" />
-          <button type="button" onClick={() => onAdd(product.id, quantity)}>Add</button>
-        </div>
       </div>
     </article>
   );
