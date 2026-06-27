@@ -1,9 +1,9 @@
 {
-  "name": "f3-vegetables-demo",
+  "name": "f3-vegetables",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js"
+    "dev": "node local-server.js",
+    "start": "node local-server.js"
   }
 }
