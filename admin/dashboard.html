@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>F3 Vegetables Admin Dashboard</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body class="admin-page">
+    <header class="dashboard-header">
+      <a class="brand" href="../">
+        <img src="../assets/f3-logo.png" alt="F3 Vegetables logo" />
+        <span>
+          <strong>F3 Admin</strong>
+          <small>Orders and offers</small>
+        </span>
+      </a>
+      <div>
+        <a href="../">Open Store</a>
+        <button id="logoutButton" type="button">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard-page">
+      <section class="admin-stats">
+        <article><span>Total orders</span><strong id="totalOrders">0</strong></article>
+        <article><span>New orders</span><strong id="newOrders">0</strong></article>
+        <article><span>Order value</span><strong id="orderValue">Rs. 0</strong></article>
+        <article><span>Offer slides</span><strong id="offerCount">0</strong></article>
+      </section>
+
+      <section class="dashboard-grid">
+        <div class="admin-card">
+          <div class="card-head">
+            <div>
+              <p>Live orders</p>
+              <h1>Customer orders</h1>
+            </div>
+            <button id="clearOrders" type="button">Clear completed</button>
+          </div>
+          <div class="orders-list" id="ordersList"></div>
+        </div>
+
+        <aside class="admin-card">
+          <div class="card-head">
+            <div>
+              <p>Daily offers</p>
+              <h1>Offer slides</h1>
+            </div>
+          </div>
+
+          <div class="offer-form">
+            <label>
+              Product
+              <select id="offerProduct"></select>
+            </label>
+            <label>
+              Offer title
+              <input id="offerTitle" placeholder="Tomato Flash Deal" />
+            </label>
+            <label>
+              Offer tag
+              <input id="offerTag" placeholder="Fresh today" />
+            </label>
+            <label>
+              Offer price
+              <input id="offerPrice" type="number" placeholder="32" />
+            </label>
+            <button id="addOffer" type="button">Publish offer slide</button>
+          </div>
+
+          <div class="offers-list" id="offersList"></div>
+        </aside>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
