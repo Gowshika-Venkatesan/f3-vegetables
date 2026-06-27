@@ -758,6 +758,22 @@ a {
   box-shadow: var(--shadow);
 }
 
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 11px;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.react-modal {
+  display: block;
+  overflow: auto;
+  background: #fff;
+}
+
 .checkout-drawer::backdrop {
   background: rgba(0, 0, 0, 0.55);
 }

@@ -1,6 +1,6 @@
 # F3 Vegetables Website
 
-Online ordering website for F3 Vegetables, Anna Nagar, Karur.
+React online ordering website for F3 Vegetables, Anna Nagar, Karur.
 
 ## What This Includes
 
@@ -16,13 +16,8 @@ Online ordering website for F3 Vegetables, Anna Nagar, Karur.
 ## Run Locally
 
 ```bash
+npm install
 npm run dev
-```
-
-Open:
-
-```text
-http://localhost:5173
 ```
 
 ## Admin Login
@@ -30,13 +25,13 @@ http://localhost:5173
 Open:
 
 ```text
-http://localhost:5173/admin/
+http://localhost:5173/admin
 ```
 
 After login, it redirects to:
 
 ```text
-http://localhost:5173/admin/dashboard.html
+http://localhost:5173/admin/dashboard
 ```
 
 Credentials:
@@ -50,8 +45,10 @@ Password: Fresh@88200
 
 1. Push this folder to GitHub.
 2. Import the GitHub repo in Vercel.
-3. Use the default static project settings.
-4. Deploy.
+3. Choose `Vite` or `React` as the framework preset.
+4. Build command: `npm run build`.
+5. Output directory: `dist`.
+6. Deploy.
 
 ## Push to a New GitHub Repo
 
