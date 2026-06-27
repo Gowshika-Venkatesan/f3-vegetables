@@ -7,7 +7,45 @@ const shopPhone = "917502888200";
 const adminCredentials = { username: "f3admin", password: "Fresh@88200" };
 
 function photo(query, size = "800x800") {
-  return `https://source.unsplash.com/featured/${size}/?${encodeURIComponent(query)}`;
+  const photos = [
+    ["coriander|cilantro", "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=900&q=86"],
+    ["mint", "https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=900&q=86"],
+    ["curry", "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=86"],
+    ["spinach|leafy|greens|amaranth", "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=900&q=86"],
+    ["tomato", "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=900&q=86"],
+    ["carrot", "https://images.unsplash.com/photo-1447175008436-054170c2e979?auto=format&fit=crop&w=900&q=86"],
+    ["coconut", "https://images.unsplash.com/photo-1580984969071-a8da5656c2fb?auto=format&fit=crop&w=900&q=86"],
+    ["banana chips", "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=900&q=86"],
+    ["banana", "https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=900&q=86"],
+    ["lemon", "https://images.unsplash.com/photo-1587496679742-bad502958fbf?auto=format&fit=crop&w=900&q=86"],
+    ["eggplant|brinjal", "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=900&q=86"],
+    ["drumstick|moringa", "https://images.unsplash.com/photo-1603048719539-9ecb4aa395e3?auto=format&fit=crop&w=900&q=86"],
+    ["small red onions|shallots", "https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=900&q=86"],
+    ["onion", "https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?auto=format&fit=crop&w=900&q=86"],
+    ["potato", "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=900&q=86"],
+    ["beans", "https://images.unsplash.com/photo-1567375698348-5d9d5ae99de0?auto=format&fit=crop&w=900&q=86"],
+    ["cucumber", "https://images.unsplash.com/photo-1604977042946-1eecc30f269e?auto=format&fit=crop&w=900&q=86"],
+    ["beetroot", "https://images.unsplash.com/photo-1593105544559-ecb03bf76f82?auto=format&fit=crop&w=900&q=86"],
+    ["pepper|capsicum", "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=900&q=86"],
+    ["cauliflower", "https://images.unsplash.com/photo-1568584711075-3d021a7c3ca3?auto=format&fit=crop&w=900&q=86"],
+    ["apple", "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=900&q=86"],
+    ["orange", "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&w=900&q=86"],
+    ["pomegranate", "https://images.unsplash.com/photo-1541344999736-83eca272f6fc?auto=format&fit=crop&w=900&q=86"],
+    ["grapes", "https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=900&q=86"],
+    ["watermelon", "https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=900&q=86"],
+    ["mango", "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=900&q=86"],
+    ["oil", "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=86"],
+    ["sesame", "https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?auto=format&fit=crop&w=900&q=86"],
+    ["cookies", "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=86"],
+    ["cut mixed|cut vegetables", "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=900&q=86"],
+    ["jasmine|marigold|flowers", "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=86"],
+    ["snacks|nuts|chips", "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&w=900&q=86"],
+    ["fruits", "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=86"],
+    ["organic|vegetables|market|basket|grocery", "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=86"]
+  ];
+  const normalized = query.toLowerCase();
+  const match = photos.find(([keys]) => keys.split("|").some((key) => normalized.includes(key)));
+  return match ? match[1] : "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=86";
 }
 
 const categories = [
