@@ -34,20 +34,52 @@ img { max-width: 100%; display: block; }
   justify-content: space-between;
   align-items: center;
   gap: 18px;
-  padding: 9px clamp(16px, 5vw, 72px);
-  background: #c80d0d;
+  padding: 10px clamp(18px, 5vw, 72px);
+  background: linear-gradient(90deg, var(--purple-dark), var(--purple), var(--purple-dark));
   color: #fff;
   font-size: 0.9rem;
   font-weight: 850;
 }
 .app-strip strong { color: #ffe900; }
+.app-strip span,
+.app-strip strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.top-svg {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.35;
+}
+.app-strip .top-svg {
+  color: #fff;
+}
+.app-strip strong .top-svg {
+  color: #ffe900;
+}
+.social-icons {
+  gap: 15px;
+}
+.social-icons .top-svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.2;
+}
 
 .pluckk-header {
   position: sticky;
   top: 0;
   z-index: 40;
   display: grid;
-  grid-template-columns: auto minmax(260px, 1fr) auto auto;
+  grid-template-columns: auto minmax(260px, 820px) auto auto;
   align-items: center;
   gap: 22px;
   padding: 13px clamp(16px, 5vw, 72px);
@@ -77,6 +109,8 @@ img { max-width: 100%; display: block; }
   align-items: center;
   gap: 12px;
   min-height: 54px;
+  width: min(100%, 820px);
+  justify-self: center;
   border: 1px solid rgba(76, 0, 88, 0.17);
   border-radius: 8px;
   padding: 0 16px;
@@ -1184,33 +1218,6 @@ img { max-width: 100%; display: block; }
 }
 
 /* Final responsive shop layout */
-.top-icon {
-  position: relative;
-  display: inline-grid;
-  width: 18px;
-  height: 18px;
-  margin-right: 8px;
-  place-items: center;
-  border-radius: 999px;
-  background: #fff;
-  color: #c80d0d;
-  font-size: 11px;
-  font-style: normal;
-  font-weight: 950;
-  vertical-align: -3px;
-}
-.info-icon::before { content: "i"; }
-.clock-icon::before { content: "8"; }
-.phone-icon::before { content: "p"; }
-.sale-icon::before { content: "!"; }
-.social-icons {
-  display: inline-flex;
-  align-items: center;
-  gap: 13px;
-  font-weight: 950;
-}
-.social-icons b { font-size: 1rem; line-height: 1; }
-
 .category-nav {
   display: flex;
   flex-wrap: wrap;

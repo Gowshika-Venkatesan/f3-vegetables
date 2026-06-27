@@ -84,6 +84,19 @@ function writeJson(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
+function TopIcon({ name }) {
+  const icons = {
+    info: <><circle cx="12" cy="12" r="9" /><path d="M12 10v6" /><path d="M12 7.5h.01" /></>,
+    clock: <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></>,
+    phone: <><path d="M6.6 4.8 9 4.2l1.4 4-1.5.9c.8 1.8 2.2 3.2 4 4l.9-1.5 4 1.4-.6 2.4c-.2.9-1 1.5-1.9 1.4C9.8 16.5 5.5 12.2 5.2 6.7c-.1-.9.5-1.7 1.4-1.9Z" /></>,
+    sale: <><path d="M13 2 5 13h6l-1 9 8-12h-6l1-8Z" /></>,
+    facebook: <><path d="M14 8h2V5h-2c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.3l.7-3h-3V9c0-.6.4-1 1-1Z" /></>,
+    instagram: <><rect x="5" y="5" width="14" height="14" rx="4" /><circle cx="12" cy="12" r="3.2" /><path d="M16.5 7.5h.01" /></>,
+    youtube: <><rect x="3.5" y="6.5" width="17" height="11" rx="3" /><path d="m10.5 9.5 5 2.5-5 2.5Z" /></>
+  };
+  return <svg className="top-svg" viewBox="0 0 24 24" aria-hidden="true">{icons[name]}</svg>;
+}
+
 function App() {
   const [cart, setCart] = useState(() => readJson("f3-cart", []));
   const [orders, setOrders] = useState(() => readJson("f3-orders", []));
@@ -157,11 +170,11 @@ function Layout({ children, cartCount, onOpenCart }) {
   return (
     <>
       <div className="app-strip">
-        <span><i className="top-icon info-icon" aria-hidden="true" />About Us</span>
-        <span><i className="top-icon clock-icon" aria-hidden="true" />8:00 AM - 9:30 PM</span>
-        <span><i className="top-icon phone-icon" aria-hidden="true" />+91 75028 88200</span>
-        <strong><i className="top-icon sale-icon" aria-hidden="true" />Flash Sale: Fresh vegetables at best prices!</strong>
-        <span className="social-icons" aria-hidden="true"><b>f</b><b>ig</b><b>yt</b></span>
+        <span><TopIcon name="info" />About Us</span>
+        <span><TopIcon name="clock" />8:00 AM - 9:30 PM</span>
+        <span><TopIcon name="phone" />+91 75028 88200</span>
+        <strong><TopIcon name="sale" />Flash Sale: Fresh vegetables at best prices!</strong>
+        <span className="social-icons"><TopIcon name="facebook" /><TopIcon name="instagram" /><TopIcon name="youtube" /></span>
         <span>Customer Support</span>
       </div>
       <header className="pluckk-header">
@@ -218,7 +231,7 @@ function HomePage({ cartCount, offers, onOpenCart }) {
               <Link to="/contact">Visit store</Link>
             </div>
           </div>
-          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1400&q=88" alt="Fresh vegetables arranged in a local grocery display" />
+          <img src="/assets/vegetable-shelf.png" alt="Fresh vegetables arranged in a supermarket display" />
         </section>
 
         <section className="wide-shell">
@@ -243,7 +256,7 @@ function HomePage({ cartCount, offers, onOpenCart }) {
 
         <section className="wide-shell store-process">
           <div className="process-photo">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=88" alt="Fresh vegetable store counter" />
+            <img src="/assets/vegetable-shelf.png" alt="Fresh vegetable store counter" />
             <div><strong>Fresh . Fine . Fair</strong><span>Sorted with the care of a local Karur vegetable shop.</span></div>
           </div>
           <div className="process-content">
