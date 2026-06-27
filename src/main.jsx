@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Link, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import "../styles.css";
@@ -6,15 +6,19 @@ import "../styles.css";
 const shopPhone = "917502888200";
 const adminCredentials = { username: "f3admin", password: "Fresh@88200" };
 
+function photo(query, size = "800x800") {
+  return `https://source.unsplash.com/featured/${size}/?${encodeURIComponent(query)}`;
+}
+
 const categories = [
-  { name: "Vegetables", label: "Fresh Vegetables", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=900&q=88", note: "Daily cooking" },
-  { name: "Leafy Vegetables", label: "Leafy and Seasonings", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=900&q=88", note: "Morning bunches" },
-  { name: "Fruits", label: "Fruits", image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=88", note: "Seasonal stock" },
-  { name: "Oils", label: "Oils", image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=88", note: "Kitchen essentials" },
-  { name: "Organic Snacks", label: "Organic Snacks", image: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&w=900&q=88", note: "Healthy bites" },
-  { name: "Organic Products", label: "Organic Products", image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=88", note: "Farm sorted" },
-  { name: "Fresh Cuts", label: "Fresh Cuts", image: "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=900&q=88", note: "Ready to cook" },
-  { name: "Flowers", label: "Flowers", image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=88", note: "Pooja daily" }
+  { name: "Vegetables", label: "Fresh Vegetables", image: photo("fresh vegetables market basket", "900x900"), note: "Daily cooking" },
+  { name: "Leafy Vegetables", label: "Leafy and Seasonings", image: photo("fresh leafy greens coriander spinach", "900x900"), note: "Morning bunches" },
+  { name: "Fruits", label: "Fruits", image: photo("fresh fruits basket indian market", "900x900"), note: "Seasonal stock" },
+  { name: "Oils", label: "Oils", image: photo("cold pressed cooking oil bottles", "900x900"), note: "Kitchen essentials" },
+  { name: "Organic Snacks", label: "Organic Snacks", image: photo("healthy organic snacks nuts chips", "900x900"), note: "Healthy bites" },
+  { name: "Organic Products", label: "Organic Products", image: photo("organic vegetables grocery store", "900x900"), note: "Farm sorted" },
+  { name: "Fresh Cuts", label: "Fresh Cuts", image: photo("cut vegetables ready to cook", "900x900"), note: "Ready to cook" },
+  { name: "Flowers", label: "Flowers", image: photo("fresh jasmine marigold flowers indian market", "900x900"), note: "Pooja daily" }
 ];
 
 const storeSteps = [
@@ -25,41 +29,41 @@ const storeSteps = [
 ];
 
 const products = [
-  { id: "organic-tomato", name: "Organic Tomato", tamil: "Organic Thakkali", category: "Organic Products", unit: "kg", price: 48, cut: 58, badge: "Organic", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=700&q=86" },
-  { id: "organic-carrot", name: "Organic Carrot", tamil: "Organic Carrot", category: "Organic Products", unit: "kg", price: 76, cut: 90, badge: "Organic", image: "https://images.unsplash.com/photo-1447175008436-054170c2e979?auto=format&fit=crop&w=700&q=86" },
-  { id: "organic-coconut", name: "Organic Coconut", tamil: "Organic Thengai", category: "Organic Products", unit: "piece", price: 42, cut: 52, badge: "Natural", image: "https://images.unsplash.com/photo-1580984969071-a8da5656c2fb?auto=format&fit=crop&w=700&q=86" },
-  { id: "organic-banana", name: "Organic Banana", tamil: "Organic Vazhai Pazham", category: "Organic Products", unit: "dozen", price: 88, cut: 105, badge: "Sweet", image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=700&q=86" },
-  { id: "organic-lemon", name: "Organic Lemon", tamil: "Organic Elumichai", category: "Organic Products", unit: "piece", price: 8, cut: 11, badge: "Fresh", image: "https://images.unsplash.com/photo-1587496679742-bad502958fbf?auto=format&fit=crop&w=700&q=86" },
-  { id: "tomato", name: "Indian Tomato", tamil: "Thakkali", category: "Vegetables", unit: "kg", price: 32, cut: 40, badge: "8 mins", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=700&q=86" },
-  { id: "brinjal", name: "Brinjal", tamil: "Kathirikai", category: "Vegetables", unit: "kg", price: 44, cut: 54, badge: "8 mins", image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=700&q=86" },
-  { id: "drumstick", name: "Drumstick", tamil: "Murungakkai", category: "Vegetables", unit: "bundle", price: 38, cut: 48, badge: "8 mins", image: "https://images.unsplash.com/photo-1603048719539-9ecb4aa395e3?auto=format&fit=crop&w=700&q=86" },
-  { id: "small-onion", name: "Small Onion", tamil: "Chinna Vengayam", category: "Vegetables", unit: "kg", price: 72, cut: 88, badge: "Kitchen", image: "https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=700&q=86" },
-  { id: "big-onion", name: "Onion", tamil: "Vengayam", category: "Vegetables", unit: "kg", price: 42, cut: 52, badge: "8 mins", image: "https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?auto=format&fit=crop&w=700&q=86" },
-  { id: "potato", name: "Potato", tamil: "Urulai Kizhangu", category: "Vegetables", unit: "kg", price: 36, cut: 44, badge: "8 mins", image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=700&q=86" },
-  { id: "carrot", name: "Carrot", tamil: "Carrot", category: "Vegetables", unit: "kg", price: 58, cut: 70, badge: "Fresh", image: "https://images.unsplash.com/photo-1447175008436-054170c2e979?auto=format&fit=crop&w=700&q=86" },
-  { id: "beans", name: "Beans", tamil: "Beans", category: "Vegetables", unit: "kg", price: 68, cut: 84, badge: "Tender", image: "https://images.unsplash.com/photo-1567375698348-5d9d5ae99de0?auto=format&fit=crop&w=700&q=86" },
-  { id: "cucumber", name: "Cucumber", tamil: "Vellarikkai", category: "Vegetables", unit: "kg", price: 34, cut: 42, badge: "Cool", image: "https://images.unsplash.com/photo-1604977042946-1eecc30f269e?auto=format&fit=crop&w=700&q=86" },
-  { id: "beetroot", name: "Beetroot", tamil: "Beetroot", category: "Vegetables", unit: "kg", price: 54, cut: 66, badge: "Fresh", image: "https://images.unsplash.com/photo-1593105544559-ecb03bf76f82?auto=format&fit=crop&w=700&q=86" },
-  { id: "capsicum", name: "Capsicum", tamil: "Kudai Milagai", category: "Vegetables", unit: "kg", price: 82, cut: 98, badge: "Premium", image: "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=700&q=86" },
-  { id: "cauliflower", name: "Cauliflower", tamil: "Cauliflower", category: "Vegetables", unit: "piece", price: 46, cut: 58, badge: "Fresh", image: "https://images.unsplash.com/photo-1568584711075-3d021a7c3ca3?auto=format&fit=crop&w=700&q=86" },
-  { id: "banana", name: "Banana", tamil: "Vazhai Pazham", category: "Fruits", unit: "dozen", price: 64, cut: 78, badge: "Sweet", image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=700&q=86" },
-  { id: "apple", name: "Apple", tamil: "Apple", category: "Fruits", unit: "kg", price: 180, cut: 220, badge: "Premium", image: "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=700&q=86" },
-  { id: "orange", name: "Orange", tamil: "Orange", category: "Fruits", unit: "kg", price: 110, cut: 135, badge: "Juicy", image: "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&w=700&q=86" },
-  { id: "pomegranate", name: "Pomegranate", tamil: "Mathulai", category: "Fruits", unit: "kg", price: 210, cut: 250, badge: "Premium", image: "https://images.unsplash.com/photo-1541344999736-83eca272f6fc?auto=format&fit=crop&w=700&q=86" },
-  { id: "grapes", name: "Grapes", tamil: "Thiratchai", category: "Fruits", unit: "kg", price: 120, cut: 145, badge: "Fresh", image: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=700&q=86" },
-  { id: "watermelon", name: "Watermelon", tamil: "Tharpoosani", category: "Fruits", unit: "kg", price: 28, cut: 36, badge: "Seasonal", image: "https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=700&q=86" },
-  { id: "mango", name: "Mango", tamil: "Mambazham", category: "Fruits", unit: "kg", price: 140, cut: 170, badge: "Seasonal", image: "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=700&q=86" },
-  { id: "keerai", name: "Fresh Greens", tamil: "Keerai", category: "Leafy Vegetables", unit: "bunch", price: 18, cut: 24, badge: "8 mins", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=86" },
-  { id: "coriander", name: "Coriander Leaves", tamil: "Kothamalli", category: "Leafy Vegetables", unit: "bunch", price: 12, cut: 16, badge: "8 mins", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=700&q=86" },
-  { id: "mint", name: "Mint Leaves", tamil: "Pudina", category: "Leafy Vegetables", unit: "bunch", price: 14, cut: 18, badge: "8 mins", image: "https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=700&q=86" },
-  { id: "curry-leaves", name: "Curry Leaves", tamil: "Karuveppilai", category: "Leafy Vegetables", unit: "pack", price: 10, cut: 14, badge: "8 mins", image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=700&q=86" },
-  { id: "spinach", name: "Spinach", tamil: "Pasalai Keerai", category: "Leafy Vegetables", unit: "bunch", price: 22, cut: 28, badge: "Healthy", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=86" },
-  { id: "groundnut-oil", name: "Groundnut Oil", tamil: "Kadalai Ennai", category: "Oils", unit: "litre", price: 210, cut: 235, badge: "Cold press", image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=700&q=86" },
-  { id: "gingelly-oil", name: "Gingelly Oil", tamil: "Nallennai", category: "Oils", unit: "litre", price: 260, cut: 290, badge: "Kitchen", image: "https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?auto=format&fit=crop&w=700&q=86" },
-  { id: "banana-chips", name: "Banana Chips", tamil: "Vazhai Chips", category: "Organic Snacks", unit: "pack", price: 85, cut: 100, badge: "Snack", image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=700&q=86" },
-  { id: "millet-cookies", name: "Millet Cookies", tamil: "Thinai Cookies", category: "Organic Snacks", unit: "pack", price: 120, cut: 145, badge: "Organic", image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=700&q=86" },
-  { id: "cut-veg-mix", name: "Cut Veg Mix", tamil: "Cut Kai Mix", category: "Fresh Cuts", unit: "pack", price: 65, cut: 80, badge: "Ready", image: "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=700&q=86" },
-  { id: "pooja-flowers", name: "Pooja Flowers", tamil: "Poo Malai", category: "Flowers", unit: "pack", price: 45, cut: 55, badge: "Morning", image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=86" }
+  { id: "organic-tomato", name: "Organic Tomato", tamil: "Organic Thakkali", category: "Organic Products", unit: "kg", price: 48, cut: 58, badge: "Organic", image: photo("organic tomato vegetable close up", "700x700") },
+  { id: "organic-carrot", name: "Organic Carrot", tamil: "Organic Carrot", category: "Organic Products", unit: "kg", price: 76, cut: 90, badge: "Organic", image: photo("organic carrots bunch", "700x700") },
+  { id: "organic-coconut", name: "Organic Coconut", tamil: "Organic Thengai", category: "Organic Products", unit: "piece", price: 42, cut: 52, badge: "Natural", image: photo("fresh coconut grocery", "700x700") },
+  { id: "organic-banana", name: "Organic Banana", tamil: "Organic Vazhai Pazham", category: "Organic Products", unit: "dozen", price: 88, cut: 105, badge: "Sweet", image: photo("organic bananas bunch", "700x700") },
+  { id: "organic-lemon", name: "Organic Lemon", tamil: "Organic Elumichai", category: "Organic Products", unit: "piece", price: 8, cut: 11, badge: "Fresh", image: photo("fresh lemons market", "700x700") },
+  { id: "tomato", name: "Indian Tomato", tamil: "Thakkali", category: "Vegetables", unit: "kg", price: 32, cut: 40, badge: "8 mins", image: photo("fresh indian tomatoes", "700x700") },
+  { id: "brinjal", name: "Brinjal", tamil: "Kathirikai", category: "Vegetables", unit: "kg", price: 44, cut: 54, badge: "8 mins", image: photo("purple eggplant brinjal", "700x700") },
+  { id: "drumstick", name: "Drumstick", tamil: "Murungakkai", category: "Vegetables", unit: "bundle", price: 38, cut: 48, badge: "8 mins", image: photo("moringa drumstick vegetable", "700x700") },
+  { id: "small-onion", name: "Small Onion", tamil: "Chinna Vengayam", category: "Vegetables", unit: "kg", price: 72, cut: 88, badge: "Kitchen", image: photo("small red onions shallots", "700x700") },
+  { id: "big-onion", name: "Onion", tamil: "Vengayam", category: "Vegetables", unit: "kg", price: 42, cut: 52, badge: "8 mins", image: photo("red onion grocery", "700x700") },
+  { id: "potato", name: "Potato", tamil: "Urulai Kizhangu", category: "Vegetables", unit: "kg", price: 36, cut: 44, badge: "8 mins", image: photo("fresh potatoes market", "700x700") },
+  { id: "carrot", name: "Carrot", tamil: "Carrot", category: "Vegetables", unit: "kg", price: 58, cut: 70, badge: "Fresh", image: photo("fresh carrots bunch market", "700x700") },
+  { id: "beans", name: "Beans", tamil: "Beans", category: "Vegetables", unit: "kg", price: 68, cut: 84, badge: "Tender", image: photo("fresh green beans", "700x700") },
+  { id: "cucumber", name: "Cucumber", tamil: "Vellarikkai", category: "Vegetables", unit: "kg", price: 34, cut: 42, badge: "Cool", image: photo("fresh cucumbers market", "700x700") },
+  { id: "beetroot", name: "Beetroot", tamil: "Beetroot", category: "Vegetables", unit: "kg", price: 54, cut: 66, badge: "Fresh", image: photo("fresh beetroot bunch", "700x700") },
+  { id: "capsicum", name: "Capsicum", tamil: "Kudai Milagai", category: "Vegetables", unit: "kg", price: 82, cut: 98, badge: "Premium", image: photo("green bell pepper capsicum", "700x700") },
+  { id: "cauliflower", name: "Cauliflower", tamil: "Cauliflower", category: "Vegetables", unit: "piece", price: 46, cut: 58, badge: "Fresh", image: photo("fresh cauliflower grocery", "700x700") },
+  { id: "banana", name: "Banana", tamil: "Vazhai Pazham", category: "Fruits", unit: "dozen", price: 64, cut: 78, badge: "Sweet", image: photo("fresh bananas bunch", "700x700") },
+  { id: "apple", name: "Apple", tamil: "Apple", category: "Fruits", unit: "kg", price: 180, cut: 220, badge: "Premium", image: photo("fresh red apples", "700x700") },
+  { id: "orange", name: "Orange", tamil: "Orange", category: "Fruits", unit: "kg", price: 110, cut: 135, badge: "Juicy", image: photo("fresh oranges fruit", "700x700") },
+  { id: "pomegranate", name: "Pomegranate", tamil: "Mathulai", category: "Fruits", unit: "kg", price: 210, cut: 250, badge: "Premium", image: photo("fresh pomegranate fruit", "700x700") },
+  { id: "grapes", name: "Grapes", tamil: "Thiratchai", category: "Fruits", unit: "kg", price: 120, cut: 145, badge: "Fresh", image: photo("fresh grapes bunch", "700x700") },
+  { id: "watermelon", name: "Watermelon", tamil: "Tharpoosani", category: "Fruits", unit: "kg", price: 28, cut: 36, badge: "Seasonal", image: photo("fresh watermelon slices", "700x700") },
+  { id: "mango", name: "Mango", tamil: "Mambazham", category: "Fruits", unit: "kg", price: 140, cut: 170, badge: "Seasonal", image: photo("fresh mangoes market", "700x700") },
+  { id: "keerai", name: "Fresh Greens", tamil: "Keerai", category: "Leafy Vegetables", unit: "bunch", price: 18, cut: 24, badge: "8 mins", image: photo("amaranth spinach greens bunch", "700x700") },
+  { id: "coriander", name: "Coriander Leaves", tamil: "Kothamalli", category: "Leafy Vegetables", unit: "bunch", price: 12, cut: 16, badge: "8 mins", image: photo("fresh coriander cilantro bunch", "700x700") },
+  { id: "mint", name: "Mint Leaves", tamil: "Pudina", category: "Leafy Vegetables", unit: "bunch", price: 14, cut: 18, badge: "8 mins", image: photo("fresh mint leaves bunch", "700x700") },
+  { id: "curry-leaves", name: "Curry Leaves", tamil: "Karuveppilai", category: "Leafy Vegetables", unit: "pack", price: 10, cut: 14, badge: "8 mins", image: photo("fresh curry leaves", "700x700") },
+  { id: "spinach", name: "Spinach", tamil: "Pasalai Keerai", category: "Leafy Vegetables", unit: "bunch", price: 22, cut: 28, badge: "Healthy", image: photo("fresh spinach bunch", "700x700") },
+  { id: "groundnut-oil", name: "Groundnut Oil", tamil: "Kadalai Ennai", category: "Oils", unit: "litre", price: 210, cut: 235, badge: "Cold press", image: photo("groundnut peanut oil bottle", "700x700") },
+  { id: "gingelly-oil", name: "Gingelly Oil", tamil: "Nallennai", category: "Oils", unit: "litre", price: 260, cut: 290, badge: "Kitchen", image: photo("sesame oil bottle", "700x700") },
+  { id: "banana-chips", name: "Banana Chips", tamil: "Vazhai Chips", category: "Organic Snacks", unit: "pack", price: 85, cut: 100, badge: "Snack", image: photo("banana chips snack", "700x700") },
+  { id: "millet-cookies", name: "Millet Cookies", tamil: "Thinai Cookies", category: "Organic Snacks", unit: "pack", price: 120, cut: 145, badge: "Organic", image: photo("millet cookies healthy snack", "700x700") },
+  { id: "cut-veg-mix", name: "Cut Veg Mix", tamil: "Cut Kai Mix", category: "Fresh Cuts", unit: "pack", price: 65, cut: 80, badge: "Ready", image: photo("cut mixed vegetables pack", "700x700") },
+  { id: "pooja-flowers", name: "Pooja Flowers", tamil: "Poo Malai", category: "Flowers", unit: "pack", price: 45, cut: 55, badge: "Morning", image: photo("jasmine marigold flowers market", "700x700") }
 ];
 
 const defaultOffers = [
@@ -167,6 +171,20 @@ function App() {
 
 function Layout({ children, cartCount, onOpenCart }) {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    setSearchTerm(params.get("q") || "");
+  }, [location.search]);
+
+  function submitSearch(event) {
+    event.preventDefault();
+    const clean = searchTerm.trim();
+    navigate(clean ? `/products?q=${encodeURIComponent(clean)}` : "/products");
+  }
+
   return (
     <>
       <div className="app-strip">
@@ -182,10 +200,17 @@ function Layout({ children, cartCount, onOpenCart }) {
           <img src="/assets/f3-logo.png" alt="F3 Vegetables logo" />
           <span><strong>F3 Vegetables</strong><small>Fresh . Fine . Fair</small></span>
         </Link>
-        <div className="search-box">
-          <span>Search</span>
-          <input placeholder="Search from our fresh products" readOnly />
-        </div>
+        <form className="search-box" onSubmit={submitSearch}>
+          <label htmlFor="site-search">Search</label>
+          <input
+            id="site-search"
+            type="search"
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+            placeholder="Search from our fresh products"
+          />
+          <button type="submit" aria-label="Search products">Go</button>
+        </form>
         <nav className="nav-links">
           <Link className={location.pathname === "/" ? "active" : ""} to="/">Home</Link>
           <Link className={location.pathname === "/products" ? "active" : ""} to="/products">Products</Link>
@@ -298,9 +323,17 @@ function HomePage({ cartCount, offers, onOpenCart }) {
 function ProductsPage({ cart, cartCount, cartTotal, onAdd, onRemove, onOpenCart }) {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const [category, setCategory] = useState(params.get("category") || "All");
-  const [query, setQuery] = useState("");
+  const initialQuery = params.get("q") || "";
+  const [category, setCategory] = useState(initialQuery ? "All" : params.get("category") || "All");
+  const [query, setQuery] = useState(initialQuery);
   const [sort, setSort] = useState("featured");
+
+  useEffect(() => {
+    const nextParams = new URLSearchParams(location.search);
+    const nextQuery = nextParams.get("q") || "";
+    setQuery(nextQuery);
+    setCategory(nextQuery ? "All" : nextParams.get("category") || "All");
+  }, [location.search]);
   const allCategories = ["All", ...categories.map((item) => item.name)];
   const activeCategory = categories.find((item) => item.name === category) || categories[0];
   const categoryTitle = category === "All" ? "Fresh Vegetables" : activeCategory.label;
