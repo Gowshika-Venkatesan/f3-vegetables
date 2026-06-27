@@ -7,30 +7,10 @@ const shopPhone = "917502888200";
 const adminCredentials = { username: "f3admin", password: "Fresh@88200" };
 
 const categories = [
-  {
-    name: "Organic Products",
-    short: "Organic",
-    story: "Direct harvest picks from trusted growers, selected for clean everyday cooking.",
-    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=88"
-  },
-  {
-    name: "Vegetables",
-    short: "Vegetables",
-    story: "Daily cooking vegetables for sambar, poriyal, kurma, rasam and lunch boxes.",
-    image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=88"
-  },
-  {
-    name: "Fruits",
-    short: "Fruits",
-    story: "Seasonal fruits and family packs for breakfast, snacks and fresh juice.",
-    image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=88"
-  },
-  {
-    name: "Leafy Vegetables",
-    short: "Leafy",
-    story: "Morning greens, coriander, mint and curry leaves for aromatic home cooking.",
-    image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=900&q=88"
-  }
+  { name: "Organic Products", label: "Organic", image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=88", note: "Harvest-direct picks" },
+  { name: "Vegetables", label: "Veggies", image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=88", note: "Daily cooking stock" },
+  { name: "Fruits", label: "Fruits", image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=88", note: "Seasonal sweetness" },
+  { name: "Leafy Vegetables", label: "Leafy", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=900&q=88", note: "Greens and herbs" }
 ];
 
 const products = [
@@ -39,7 +19,6 @@ const products = [
   { id: "organic-coconut", name: "Organic Coconut", tamil: "Organic Thengai", category: "Organic Products", unit: "piece", price: 42, cut: 52, badge: "Natural", image: "https://images.unsplash.com/photo-1580984969071-a8da5656c2fb?auto=format&fit=crop&w=700&q=86" },
   { id: "organic-banana", name: "Organic Banana", tamil: "Organic Vazhai Pazham", category: "Organic Products", unit: "dozen", price: 88, cut: 105, badge: "Sweet", image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=700&q=86" },
   { id: "organic-lemon", name: "Organic Lemon", tamil: "Organic Elumichai", category: "Organic Products", unit: "piece", price: 8, cut: 11, badge: "Fresh", image: "https://images.unsplash.com/photo-1587496679742-bad502958fbf?auto=format&fit=crop&w=700&q=86" },
-
   { id: "tomato", name: "Tomato", tamil: "Thakkali", category: "Vegetables", unit: "kg", price: 32, cut: 40, badge: "Daily", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=700&q=86" },
   { id: "brinjal", name: "Brinjal", tamil: "Kathirikai", category: "Vegetables", unit: "kg", price: 44, cut: 54, badge: "Fresh", image: "https://images.unsplash.com/photo-1604914440268-8d352fe4db95?auto=format&fit=crop&w=700&q=86" },
   { id: "drumstick", name: "Drumstick", tamil: "Murungakkai", category: "Vegetables", unit: "bundle", price: 38, cut: 48, badge: "Popular", image: "https://images.unsplash.com/photo-1597362925123-77861d3fbac7?auto=format&fit=crop&w=700&q=86" },
@@ -52,28 +31,24 @@ const products = [
   { id: "beetroot", name: "Beetroot", tamil: "Beetroot", category: "Vegetables", unit: "kg", price: 54, cut: 66, badge: "Fresh", image: "https://images.unsplash.com/photo-1593105544559-ecb03bf76f82?auto=format&fit=crop&w=700&q=86" },
   { id: "capsicum", name: "Capsicum", tamil: "Kudai Milagai", category: "Vegetables", unit: "kg", price: 82, cut: 98, badge: "Premium", image: "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=700&q=86" },
   { id: "cauliflower", name: "Cauliflower", tamil: "Cauliflower", category: "Vegetables", unit: "piece", price: 46, cut: 58, badge: "Fresh", image: "https://images.unsplash.com/photo-1568584711075-3d021a7c3ca3?auto=format&fit=crop&w=700&q=86" },
-
   { id: "banana", name: "Banana", tamil: "Vazhai Pazham", category: "Fruits", unit: "dozen", price: 64, cut: 78, badge: "Sweet", image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=700&q=86" },
   { id: "apple", name: "Apple", tamil: "Apple", category: "Fruits", unit: "kg", price: 180, cut: 220, badge: "Premium", image: "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=700&q=86" },
   { id: "orange", name: "Orange", tamil: "Orange", category: "Fruits", unit: "kg", price: 110, cut: 135, badge: "Juicy", image: "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&w=700&q=86" },
   { id: "pomegranate", name: "Pomegranate", tamil: "Mathulai", category: "Fruits", unit: "kg", price: 210, cut: 250, badge: "Premium", image: "https://images.unsplash.com/photo-1541344999736-83eca272f6fc?auto=format&fit=crop&w=700&q=86" },
   { id: "grapes", name: "Grapes", tamil: "Thiratchai", category: "Fruits", unit: "kg", price: 120, cut: 145, badge: "Fresh", image: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=700&q=86" },
   { id: "watermelon", name: "Watermelon", tamil: "Tharpoosani", category: "Fruits", unit: "kg", price: 28, cut: 36, badge: "Seasonal", image: "https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=700&q=86" },
-  { id: "papaya", name: "Papaya", tamil: "Pappali", category: "Fruits", unit: "kg", price: 48, cut: 60, badge: "Ripe", image: "https://images.unsplash.com/photo-1617112848923-cc2234396a8d?auto=format&fit=crop&w=700&q=86" },
   { id: "mango", name: "Mango", tamil: "Mambazham", category: "Fruits", unit: "kg", price: 140, cut: 170, badge: "Seasonal", image: "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=700&q=86" },
-
   { id: "keerai", name: "Fresh Greens", tamil: "Keerai", category: "Leafy Vegetables", unit: "bunch", price: 18, cut: 24, badge: "Morning", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=86" },
   { id: "coriander", name: "Coriander", tamil: "Kothamalli", category: "Leafy Vegetables", unit: "bunch", price: 12, cut: 16, badge: "Fresh", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=86" },
   { id: "mint", name: "Mint Leaves", tamil: "Pudina", category: "Leafy Vegetables", unit: "bunch", price: 14, cut: 18, badge: "Aroma", image: "https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=700&q=86" },
   { id: "curry-leaves", name: "Curry Leaves", tamil: "Karuveppilai", category: "Leafy Vegetables", unit: "pack", price: 10, cut: 14, badge: "Daily", image: "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=700&q=86" },
-  { id: "spinach", name: "Spinach", tamil: "Pasalai Keerai", category: "Leafy Vegetables", unit: "bunch", price: 22, cut: 28, badge: "Healthy", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=86" },
-  { id: "spring-onion", name: "Spring Onion", tamil: "Vengaya Thal", category: "Leafy Vegetables", unit: "bunch", price: 28, cut: 36, badge: "Fresh", image: "https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?auto=format&fit=crop&w=700&q=86" }
+  { id: "spinach", name: "Spinach", tamil: "Pasalai Keerai", category: "Leafy Vegetables", unit: "bunch", price: 22, cut: 28, badge: "Healthy", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=86" }
 ];
 
 const defaultOffers = [
-  { productId: "organic-tomato", title: "Organic Fresh Pack", tag: "Harvest direct", price: 48, code: "F3FRESH" },
-  { productId: "keerai", title: "Leafy Morning Saver", tag: "Today only", price: 18, code: "GREENS" },
-  { productId: "banana", title: "Family Fruit Basket", tag: "Sweet stock", price: 64, code: "FRUIT" }
+  { productId: "organic-tomato", title: "Get 15% off on organic basket", tag: "Harvest direct", price: 48, code: "F3FRESH" },
+  { productId: "keerai", title: "Morning greens from Rs. 18", tag: "Leafy vegetables", price: 18, code: "GREENS" },
+  { productId: "banana", title: "Family fruit basket offer", tag: "Sweet stock", price: 64, code: "FRUIT" }
 ];
 
 function money(value) {
@@ -99,6 +74,9 @@ function App() {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [toast, setToast] = useState("");
 
+  const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+
   function showToast(message) {
     setToast(message);
     window.setTimeout(() => setToast(""), 2200);
@@ -120,15 +98,12 @@ function App() {
       ? cart.map((item) => item.id === productId ? { ...item, quantity: item.quantity + quantity } : item)
       : [...cart, { ...product, quantity }];
     saveCart(nextCart);
-    showToast(`${product.name} added to basket`);
+    showToast(`${product.name} added to cart`);
   }
 
   function removeFromCart(productId) {
     saveCart(cart.filter((item) => item.id !== productId));
   }
-
-  const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <BrowserRouter>
@@ -162,28 +137,31 @@ function App() {
 
 function Layout({ children, cartCount, onOpenCart }) {
   const location = useLocation();
-  const active = location.pathname;
   return (
     <>
-      <div className="top-strip">
-        <span>Fresh harvest, premium selection, Karur delivery</span>
-        <span>Call 075028 88200</span>
+      <div className="app-strip">
+        <span>Order will be confirmed by F3 Vegetables</span>
+        <span>Karur delivery and pickup available</span>
       </div>
-      <header className="site-header">
+      <header className="pluckk-header">
         <Link className="brand" to="/">
           <img src="/assets/f3-logo.png" alt="F3 Vegetables logo" />
           <span><strong>F3 Vegetables</strong><small>Fresh . Fine . Fair</small></span>
         </Link>
-        <nav className="main-nav" aria-label="Main navigation">
-          <Link className={active === "/" ? "active" : ""} to="/">Home</Link>
-          <Link className={active === "/products" ? "active" : ""} to="/products">Products</Link>
-          <Link className={active === "/contact" ? "active" : ""} to="/contact">Contact</Link>
+        <div className="search-box">
+          <span>Search</span>
+          <input placeholder="Search from our fresh products" readOnly />
+        </div>
+        <nav className="nav-links">
+          <Link className={location.pathname === "/" ? "active" : ""} to="/">Home</Link>
+          <Link className={location.pathname === "/products" ? "active" : ""} to="/products">Products</Link>
+          <Link className={location.pathname === "/contact" ? "active" : ""} to="/contact">Contact</Link>
         </nav>
-        <button className="cart-button" type="button" onClick={onOpenCart}>Cart <strong>{cartCount % 1 === 0 ? cartCount : cartCount.toFixed(1)}</strong></button>
+        <button className="cart-chip" type="button" onClick={onOpenCart}>Cart <strong>{cartCount % 1 === 0 ? cartCount : cartCount.toFixed(1)}</strong></button>
       </header>
       {children}
       <Footer />
-      <nav className="mobile-nav">
+      <nav className="mobile-tabs">
         <Link to="/">Home</Link>
         <Link to="/products">Products</Link>
         <Link to="/contact">Contact</Link>
@@ -198,47 +176,35 @@ function HomePage({ cartCount, offers, onOpenCart }) {
     const product = products.find((item) => item.id === offer.productId) || products[0];
     return { ...offer, product, image: product.image, unit: product.unit, price: Number(offer.price || product.price) };
   });
-
   return (
     <Layout cartCount={cartCount} onOpenCart={onOpenCart}>
       <main>
-        <section className="home-hero">
-          <div className="home-copy">
-            <p>Premium vegetable market</p>
-            <h1>Fresh produce with a royal touch.</h1>
-            <span>Order organic products, vegetables, fruits and leafy vegetables from F3 Vegetables, Anna Nagar, Karur.</span>
-            <div className="hero-actions">
-              <Link to="/products">Shop products</Link>
+        <section className="home-intro">
+          <div>
+            <p>Fresh harvest marketplace</p>
+            <h1>Fresh fruits and vegetables, much closer to home.</h1>
+            <span>F3 Vegetables brings organic products, daily vegetables, fruits and leafy greens to families around Anna Nagar, Karur.</span>
+            <div className="hero-buttons">
+              <Link to="/products">Shop now</Link>
               <Link to="/contact">Visit store</Link>
             </div>
           </div>
-          <div className="home-visual">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1500&q=90" alt="Fresh vegetable baskets" />
-            <div><strong>Open until 9 PM</strong><span>Anna Nagar, Karur</span></div>
-          </div>
+          <img src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=1400&q=88" alt="Fresh vegetables in baskets" />
         </section>
 
-        <section className="story-band">
-          <div>
-            <p>Harvest to home</p>
-            <h2>Selected close to source, packed for your kitchen.</h2>
+        <section className="wide-shell">
+          <div className="section-title">
+            <div><p>Today's offers</p><h2>Fresh campaign banners</h2></div>
+            <Link to="/products">View all</Link>
           </div>
-          <span>For organic products, we can highlight farm sourcing, morning harvest, cleaning, sorting and fast local delivery.</span>
-        </section>
-
-        <section className="page-section">
-          <div className="section-heading">
-            <div><p>Today at F3</p><h2>Daily offer carousel</h2></div>
-            <Link to="/products">Shop all</Link>
-          </div>
-          <div className="campaign-carousel">
+          <div className="offer-carousel">
             {displayOffers.map((offer) => (
-              <article className="campaign-slide" key={`${offer.productId}-${offer.title}`}>
+              <article className="offer-banner" key={`${offer.productId}-${offer.title}`}>
                 <div>
                   <small>{offer.tag}</small>
                   <h3>{offer.title}</h3>
                   <strong>{money(offer.price)} / {offer.unit}</strong>
-                  <span>Use code: {offer.code || "F3FRESH"}</span>
+                  <span>Use Code: {offer.code || "F3FRESH"}</span>
                 </div>
                 <img src={offer.image} alt={offer.title} />
               </article>
@@ -246,28 +212,29 @@ function HomePage({ cartCount, offers, onOpenCart }) {
           </div>
         </section>
 
-        <section className="page-section">
-          <div className="section-heading">
-            <div><p>Shop by page</p><h2>Explore categories</h2></div>
-          </div>
-          <div className="home-categories">
+        <section className="wide-shell promise-grid">
+          <article><strong>Harvest Direct</strong><span>Organic products can be sourced directly from trusted growers and explained clearly on the products page.</span></article>
+          <article><strong>Quality Checked</strong><span>Every basket can be checked before billing and packing.</span></article>
+          <article><strong>Fair Billing</strong><span>Final amount is confirmed by exact weight and daily rate.</span></article>
+          <article><strong>Local Support</strong><span>Call or WhatsApp F3 directly for urgent orders.</span></article>
+        </section>
+
+        <section className="wide-shell">
+          <div className="section-title"><div><p>Explore by category</p><h2>Shop F3 aisles</h2></div></div>
+          <div className="category-showcase">
             {categories.map((category) => (
-              <Link className="category-card" to={`/products?category=${encodeURIComponent(category.name)}`} key={category.name}>
+              <Link className="category-round" to={`/products?category=${encodeURIComponent(category.name)}`} key={category.name}>
                 <img src={category.image} alt={category.name} />
-                <div>
-                  <span>{category.short}</span>
-                  <strong>{category.name}</strong>
-                  <small>{category.story}</small>
-                </div>
+                <strong>{category.label}</strong>
+                <span>{category.note}</span>
               </Link>
             ))}
           </div>
         </section>
 
-        <section className="page-section process-section">
-          <article><span>01</span><strong>Morning sourcing</strong><p>Products are chosen for freshness before they enter the basket.</p></article>
-          <article><span>02</span><strong>Sorting and packing</strong><p>Vegetables are checked, grouped and prepared for pickup or delivery.</p></article>
-          <article><span>03</span><strong>Order confirmation</strong><p>The shop confirms exact stock, weight and final bill through WhatsApp.</p></article>
+        <section className="wide-shell harvest-story">
+          <div><p>From harvest to basket</p><h2>Organic products deserve their own story.</h2></div>
+          <span>On the products page, customers can browse organic items separately and learn how F3 can source selected produce from harvest partners, sort it, pack it, and confirm the order through WhatsApp.</span>
         </section>
       </main>
     </Layout>
@@ -277,11 +244,9 @@ function HomePage({ cartCount, offers, onOpenCart }) {
 function ProductsPage({ cart, cartCount, cartTotal, onAdd, onRemove, onOpenCart }) {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const initialCategory = params.get("category") || "All";
-  const [category, setCategory] = useState(initialCategory);
+  const [category, setCategory] = useState(params.get("category") || "All");
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("featured");
-
   const allCategories = ["All", ...categories.map((item) => item.name)];
   const filtered = useMemo(() => {
     const search = query.toLowerCase().trim();
@@ -294,19 +259,22 @@ function ProductsPage({ cart, cartCount, cartTotal, onAdd, onRemove, onOpenCart 
     if (sort === "high") return [...list].sort((a, b) => b.price - a.price);
     return list;
   }, [category, query, sort]);
-
+  const organicStory = categories.find((item) => item.name === "Organic Products");
   return (
     <Layout cartCount={cartCount} onOpenCart={onOpenCart}>
       <main>
-        <section className="products-hero">
+        <section className="products-top">
           <div>
-            <p>F3 product market</p>
-            <h1>Choose products for your fresh basket.</h1>
-            <span>Smaller cards, realistic product images, category filters and a basket that stays ready while you shop.</span>
+            <p>Products</p>
+            <h1>Choose fresh products on a complete shopping page.</h1>
+            <span>Browse by organic products, vegetables, fruits and leafy vegetables with realistic product cards.</span>
           </div>
         </section>
-
-        <section className="product-toolbar">
+        <section className="organic-note">
+          <img src={organicStory.image} alt="Organic products" />
+          <div><p>Organic Products</p><h2>From harvest partners to your F3 basket.</h2><span>Use this section to explain sourcing, harvest timing, cleaning, sorting and how F3 confirms availability before delivery.</span></div>
+        </section>
+        <section className="product-tools">
           <input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder="Search tomato, apple, keerai..." />
           <select value={sort} onChange={(event) => setSort(event.target.value)}>
             <option value="featured">Featured</option>
@@ -314,15 +282,12 @@ function ProductsPage({ cart, cartCount, cartTotal, onAdd, onRemove, onOpenCart 
             <option value="high">Price high to low</option>
           </select>
         </section>
-
-        <section className="product-page-layout">
-          <aside className="category-sidebar">
+        <section className="shopping-layout">
+          <aside className="filter-panel">
             <strong>Categories</strong>
-            {allCategories.map((item) => (
-              <button className={category === item ? "active" : ""} type="button" key={item} onClick={() => setCategory(item)}>{item}</button>
-            ))}
+            {allCategories.map((item) => <button className={category === item ? "active" : ""} type="button" key={item} onClick={() => setCategory(item)}>{item}</button>)}
           </aside>
-          <div className="compact-grid">
+          <div className="product-grid">
             {filtered.map((product) => <ProductCard product={product} onAdd={onAdd} key={product.id} />)}
           </div>
           <BasketPanel cart={cart} total={cartTotal} count={cartCount} onRemove={onRemove} onCheckout={onOpenCart} />
@@ -336,17 +301,15 @@ function ContactPage({ cartCount, onOpenCart }) {
   return (
     <Layout cartCount={cartCount} onOpenCart={onOpenCart}>
       <main>
-        <section className="contact-hero">
-          <div>
-            <p>Visit F3 Vegetables</p>
-            <h1>Fresh produce in Anna Nagar, Karur.</h1>
-            <span>No 1, 5th Cross Rd, opposite to KCP House west gate, Anna Nagar, Karur, Tamil Nadu 639002.</span>
-          </div>
+        <section className="contact-top">
+          <p>Contact</p>
+          <h1>Visit F3 Vegetables in Anna Nagar, Karur.</h1>
+          <span>No 1, 5th Cross Rd, opposite to KCP House west gate, Anna Nagar, Karur, Tamil Nadu 639002.</span>
         </section>
-        <section className="contact-grid">
+        <section className="contact-cards">
           <article><strong>Phone</strong><a href="tel:+917502888200">075028 88200</a></article>
           <article><strong>Hours</strong><span>Open until 9 PM</span></article>
-          <article><strong>Map</strong><a href="https://www.google.com/search?q=f3+vegetables+karur" target="_blank" rel="noreferrer">Open Google listing</a></article>
+          <article><strong>Maps</strong><a href="https://www.google.com/search?q=f3+vegetables+karur" target="_blank" rel="noreferrer">Open Google listing</a></article>
         </section>
       </main>
     </Layout>
@@ -356,17 +319,17 @@ function ContactPage({ cartCount, onOpenCart }) {
 function ProductCard({ product, onAdd }) {
   const [quantity, setQuantity] = useState(1);
   return (
-    <article className="small-product-card">
-      <div className="small-product-image">
+    <article className="product-card">
+      <div className="product-img">
         <img src={product.image} alt={product.name} />
         <span>{product.badge}</span>
       </div>
-      <div className="small-product-body">
+      <div className="product-info">
         <small>{product.category}</small>
         <h3>{product.name}</h3>
         <p>{product.tamil}</p>
-        <div className="small-price"><strong>{money(product.price)}</strong><span><s>{money(product.cut)}</s> / {product.unit}</span></div>
-        <div className="small-add">
+        <div className="price-line"><strong>{money(product.price)}</strong><span><s>{money(product.cut)}</s> / {product.unit}</span></div>
+        <div className="add-line">
           <input value={quantity} onChange={(event) => setQuantity(Number(event.target.value))} type="number" min="0.5" step="0.5" />
           <button type="button" onClick={() => onAdd(product.id, quantity)}>Add</button>
         </div>
@@ -379,9 +342,7 @@ function BasketPanel({ cart, total, count, onRemove, onCheckout }) {
   return (
     <aside className="basket-panel">
       <div className="basket-title"><span>My Basket</span><strong>{count % 1 === 0 ? count : count.toFixed(1)} items</strong></div>
-      <div className="basket-list">
-        {cart.length ? cart.map((item) => <BasketLine item={item} onRemove={onRemove} key={item.id} />) : <div className="empty-state">Add products to start your basket.</div>}
-      </div>
+      <div className="basket-list">{cart.length ? cart.map((item) => <BasketLine item={item} onRemove={onRemove} key={item.id} />) : <div className="empty-state">Add products to start your basket.</div>}</div>
       <div className="basket-total"><span>Total</span><strong>{money(total)}</strong></div>
       <button type="button" onClick={onCheckout}>Checkout</button>
     </aside>
@@ -400,7 +361,6 @@ function BasketLine({ item, onRemove }) {
 function CheckoutModal({ open, cart, total, onClose, onRemove, onOrder }) {
   const [customer, setCustomer] = useState({ name: "", phone: "", address: "", type: "Delivery", payment: "UPI after confirmation" });
   if (!open) return null;
-
   function whatsappText(order) {
     return encodeURIComponent([
       "New F3 Vegetables order",
@@ -416,7 +376,6 @@ function CheckoutModal({ open, cart, total, onClose, onRemove, onOrder }) {
       `Total: ${money(order.total)}`
     ].join("\n"));
   }
-
   function placeOrder() {
     if (!cart.length || !customer.name.trim() || !customer.phone.trim()) return;
     const order = {
@@ -433,7 +392,6 @@ function CheckoutModal({ open, cart, total, onClose, onRemove, onOrder }) {
     onOrder(order);
     window.setTimeout(() => window.open(`https://wa.me/${shopPhone}?text=${whatsappText(order)}`, "_blank", "noreferrer"), 300);
   }
-
   return (
     <div className="modal-backdrop">
       <section className="checkout-modal">
@@ -459,7 +417,7 @@ function Footer() {
       <div className="footer-grid">
         <div><img src="/assets/f3-logo.png" alt="F3 Vegetables logo" /><strong>F3 Vegetables</strong><span>Fresh . Fine . Fair produce in Karur.</span></div>
         <div><h3>Pages</h3><Link to="/">Home</Link><Link to="/products">Products</Link><Link to="/contact">Contact</Link></div>
-        <div><h3>Categories</h3><Link to="/products?category=Organic%20Products">Organic Products</Link><Link to="/products?category=Vegetables">Vegetables</Link><Link to="/products?category=Fruits">Fruits</Link><Link to="/products?category=Leafy%20Vegetables">Leafy Vegetables</Link></div>
+        <div><h3>Categories</h3>{categories.map((item) => <Link key={item.name} to={`/products?category=${encodeURIComponent(item.name)}`}>{item.name}</Link>)}</div>
         <div><h3>Contact</h3><span>075028 88200</span><span>No 1, 5th Cross Rd, Anna Nagar, Karur 639002</span></div>
       </div>
       <div className="footer-bottom"><span>F3 Vegetables Karur</span><span>Premium fresh ordering experience</span></div>
@@ -499,17 +457,14 @@ function AdminDashboard({ orders, setOrders, offers, setOffers }) {
   const navigate = useNavigate();
   const [offerForm, setOfferForm] = useState({ productId: "organic-tomato", title: "", tag: "", price: "", code: "" });
   if (sessionStorage.getItem("f3-admin-auth") !== "yes") return <Navigate to="/admin" replace />;
-
   function saveOrders(nextOrders) {
     setOrders(nextOrders);
     writeJson("f3-orders", nextOrders);
   }
-
   function saveOffers(nextOffers) {
     setOffers(nextOffers);
     writeJson("f3-offers", nextOffers);
   }
-
   function publishOffer() {
     const product = products.find((item) => item.id === offerForm.productId);
     const price = Number(offerForm.price || product.price);
@@ -517,9 +472,7 @@ function AdminDashboard({ orders, setOrders, offers, setOffers }) {
     saveOffers([{ productId: product.id, title: offerForm.title.trim(), tag: offerForm.tag.trim(), price, code: offerForm.code || "F3FRESH" }, ...offers]);
     setOfferForm({ productId: "organic-tomato", title: "", tag: "", price: "", code: "" });
   }
-
   const orderValue = orders.reduce((total, order) => total + Number(order.total || 0), 0);
-
   return (
     <div className="admin-page">
       <header className="dashboard-header">

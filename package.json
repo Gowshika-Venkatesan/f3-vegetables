@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/prepare-dist.mjs && esbuild src/main.jsx --bundle --outdir=dist/assets --entry-names=app --asset-names=[name] --loader:.png=file --loader:.jpg=file --loader:.jpeg=file --loader:.webp=file --loader:.svg=file --format=esm --minify && node scripts/write-html.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -15,5 +15,7 @@
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "esbuild": "^0.25.12"
+  }
 }
