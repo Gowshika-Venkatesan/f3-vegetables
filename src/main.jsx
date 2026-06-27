@@ -6,46 +6,54 @@ import "../styles.css";
 const shopPhone = "917502888200";
 const adminCredentials = { username: "f3admin", password: "Fresh@88200" };
 
-function photo(query, size = "800x800") {
+const defaultProductImage = "/images/products/default-vegetable.png";
+
+function productImage(filename) {
+  return `/images/products/${filename}`;
+}
+
+function handleImageFallback(event) {
+  if (!event.currentTarget.dataset.fallbackApplied) {
+    event.currentTarget.dataset.fallbackApplied = "true";
+    event.currentTarget.src = defaultProductImage;
+  }
+}
+
+function photo(query) {
   const photos = [
-    ["coriander|cilantro", "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=900&q=86"],
-    ["mint", "https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=900&q=86"],
-    ["curry", "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=86"],
-    ["spinach|leafy|greens|amaranth", "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=900&q=86"],
-    ["tomato", "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=900&q=86"],
-    ["carrot", "https://images.unsplash.com/photo-1447175008436-054170c2e979?auto=format&fit=crop&w=900&q=86"],
-    ["coconut", "https://images.unsplash.com/photo-1580984969071-a8da5656c2fb?auto=format&fit=crop&w=900&q=86"],
-    ["banana chips", "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=900&q=86"],
-    ["banana", "https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=900&q=86"],
-    ["lemon", "https://images.unsplash.com/photo-1587496679742-bad502958fbf?auto=format&fit=crop&w=900&q=86"],
-    ["eggplant|brinjal", "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=900&q=86"],
-    ["drumstick|moringa", "https://images.unsplash.com/photo-1603048719539-9ecb4aa395e3?auto=format&fit=crop&w=900&q=86"],
-    ["small red onions|shallots", "https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=900&q=86"],
-    ["onion", "https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?auto=format&fit=crop&w=900&q=86"],
-    ["potato", "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=900&q=86"],
-    ["beans", "https://images.unsplash.com/photo-1567375698348-5d9d5ae99de0?auto=format&fit=crop&w=900&q=86"],
-    ["cucumber", "https://images.unsplash.com/photo-1604977042946-1eecc30f269e?auto=format&fit=crop&w=900&q=86"],
-    ["beetroot", "https://images.unsplash.com/photo-1593105544559-ecb03bf76f82?auto=format&fit=crop&w=900&q=86"],
-    ["pepper|capsicum", "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=900&q=86"],
-    ["cauliflower", "https://images.unsplash.com/photo-1568584711075-3d021a7c3ca3?auto=format&fit=crop&w=900&q=86"],
-    ["apple", "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=900&q=86"],
-    ["orange", "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&w=900&q=86"],
-    ["pomegranate", "https://images.unsplash.com/photo-1541344999736-83eca272f6fc?auto=format&fit=crop&w=900&q=86"],
-    ["grapes", "https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=900&q=86"],
-    ["watermelon", "https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=900&q=86"],
-    ["mango", "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=900&q=86"],
-    ["oil", "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=86"],
-    ["sesame", "https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?auto=format&fit=crop&w=900&q=86"],
-    ["cookies", "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=86"],
-    ["cut mixed|cut vegetables", "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=900&q=86"],
-    ["jasmine|marigold|flowers", "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=86"],
-    ["snacks|nuts|chips", "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&w=900&q=86"],
-    ["fruits", "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=86"],
-    ["organic|vegetables|market|basket|grocery", "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=86"]
+    ["organic tomato|tomato", "tomato.png"],
+    ["organic carrot|carrot", "carrot.png"],
+    ["organic coconut|coconut", "coconut.png"],
+    ["organic banana|banana chips|banana", "banana.png"],
+    ["organic lemon|lemon", "lemon.png"],
+    ["eggplant|brinjal", "brinjal.png"],
+    ["drumstick|moringa", "bottle-gourd.png"],
+    ["small red onions|shallots|red onion|onion", "onion.png"],
+    ["potato", "potato.png"],
+    ["beans|green beans", "green-beans.png"],
+    ["cucumber", "cucumber.png"],
+    ["beetroot", "beetroot.png"],
+    ["pepper|capsicum", "capsicum-green.png"],
+    ["cauliflower", "cauliflower.png"],
+    ["apple", "apple.png"],
+    ["orange", "orange.png"],
+    ["pomegranate", "pomegranate.png"],
+    ["grapes", "grapes-green.png"],
+    ["watermelon", "watermelon.png"],
+    ["mango", "mango.png"],
+    ["amaranth|spinach|leafy|greens", "spinach.png"],
+    ["coriander|cilantro|fenugreek", "fenugreek-leaves.png"],
+    ["mint|curry", "mint-leaves.png"],
+    ["oil|sesame|groundnut|peanut", "default-vegetable.png"],
+    ["cookies|snacks|nuts|chips", "banana-chips.png"],
+    ["cut mixed|cut vegetables", "french-beans.png"],
+    ["jasmine|marigold|flowers", "default-vegetable.png"],
+    ["fruits", "apple.png"],
+    ["organic|vegetables|market|basket|grocery", "tomato.png"]
   ];
   const normalized = query.toLowerCase();
   const match = photos.find(([keys]) => keys.split("|").some((key) => normalized.includes(key)));
-  return match ? match[1] : "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=86";
+  return productImage(match ? match[1] : "default-vegetable.png");
 }
 
 const categories = [
@@ -259,7 +267,7 @@ function Layout({ children, cartCount, onOpenCart }) {
       <nav className="category-nav" aria-label="Shop categories">
         {categories.slice(0, 6).map((category) => (
           <Link to={`/products?category=${encodeURIComponent(category.name)}`} key={category.name}>
-            <img src={category.image} alt="" />
+            <img src={category.image} alt="" onError={handleImageFallback} />
             <span>{category.label}</span>
           </Link>
         ))}
@@ -294,7 +302,7 @@ function HomePage({ cartCount, offers, onOpenCart }) {
               <Link to="/contact">Visit store</Link>
             </div>
           </div>
-          <img src="/assets/vegetable-shelf.png" alt="Fresh vegetables arranged in a supermarket display" />
+          <img src="/images/home/hero-fresh-produce.png" alt="Fresh fruits and vegetables arranged for F3 Vegetables" />
         </section>
 
         <section className="wide-shell">
@@ -311,7 +319,7 @@ function HomePage({ cartCount, offers, onOpenCart }) {
                   <strong>{money(offer.price)} / {offer.unit}</strong>
                   <span>Use Code: {offer.code || "F3FRESH"}</span>
                 </div>
-                <img src={offer.image} alt={offer.title} />
+                <img src={offer.image} alt={offer.title} onError={handleImageFallback} />
               </article>
             ))}
           </div>
@@ -319,7 +327,7 @@ function HomePage({ cartCount, offers, onOpenCart }) {
 
         <section className="wide-shell store-process">
           <div className="process-photo">
-            <img src="/assets/vegetable-shelf.png" alt="Fresh vegetable store counter" />
+            <img src="/images/home/farm-fresh-banner.png" alt="Farm fresh fruits and vegetables banner" />
             <div><strong>Fresh . Fine . Fair</strong><span>Sorted with the care of a local Karur vegetable shop.</span></div>
           </div>
           <div className="process-content">
@@ -341,7 +349,7 @@ function HomePage({ cartCount, offers, onOpenCart }) {
           <div className="category-showcase">
             {categories.map((category) => (
               <Link className="category-round" to={`/products?category=${encodeURIComponent(category.name)}`} key={category.name}>
-                <img src={category.image} alt={category.name} />
+                <img src={category.image} alt={category.name} onError={handleImageFallback} />
                 <strong>{category.label}</strong>
                 <span>{category.note}</span>
               </Link>
@@ -392,7 +400,7 @@ function ProductsPage({ cart, cartCount, cartTotal, onAdd, onRemove, onOpenCart 
       <main>
         <section className="market-header">
           <Link to="/" className="back-link" aria-label="Back to home">&lt;</Link>
-          <img src={activeCategory.image} alt={categoryTitle} />
+          <img src={activeCategory.image} alt={categoryTitle} onError={handleImageFallback} />
           <div><h1>{categoryTitle}</h1><span>{filtered.length} items</span></div>
           <button type="button" aria-label="Search products">Search</button>
         </section>
@@ -402,7 +410,7 @@ function ProductsPage({ cart, cartCount, cartTotal, onAdd, onRemove, onOpenCart 
               const detail = categories.find((entry) => entry.name === item);
               return (
                 <button className={category === item ? "active" : ""} type="button" key={item} onClick={() => setCategory(item)}>
-                  <img src={detail.image} alt="" />
+                  <img src={detail.image} alt="" onError={handleImageFallback} />
                   <span>{detail.label}</span>
                 </button>
               );
@@ -454,7 +462,7 @@ function ProductCard({ product, onAdd }) {
   return (
     <article className="product-card">
       <div className="product-img">
-        <img src={product.image} alt={product.name} />
+        <img src={product.image} alt={product.name} onError={handleImageFallback} />
       </div>
       <button className="quick-add" type="button" onClick={() => onAdd(product.id, 1)} aria-label={`Add ${product.name}`}>+</button>
       <div className="product-info">
