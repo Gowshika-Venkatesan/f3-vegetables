@@ -7,10 +7,17 @@ const shopPhone = "917502888200";
 const adminCredentials = { username: "f3admin", password: "Fresh@88200" };
 
 const categories = [
-  { name: "Organic Products", label: "Organic", image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=88", note: "Harvest-direct picks" },
-  { name: "Vegetables", label: "Veggies", image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=88", note: "Daily cooking stock" },
-  { name: "Fruits", label: "Fruits", image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=88", note: "Seasonal sweetness" },
-  { name: "Leafy Vegetables", label: "Leafy", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=900&q=88", note: "Greens and herbs" }
+  { name: "Organic Products", label: "Organic", image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=900&q=88", note: "Farm sorted" },
+  { name: "Vegetables", label: "Vegetables", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=900&q=88", note: "Daily cooking" },
+  { name: "Fruits", label: "Fruits", image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=88", note: "Seasonal stock" },
+  { name: "Leafy Vegetables", label: "Leafy Greens", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=900&q=88", note: "Morning bunches" }
+];
+
+const storeSteps = [
+  { code: "01", title: "Morning market selection", text: "Vegetables are picked for daily cooking needs, not for photo-show only." },
+  { code: "02", title: "Sorted before packing", text: "Damaged pieces can be removed and the final quantity is confirmed before billing." },
+  { code: "03", title: "WhatsApp confirmation", text: "F3 confirms rate, availability and delivery or pickup timing with the customer." },
+  { code: "04", title: "Karur local support", text: "Direct shop contact for urgent family orders, functions and bulk vegetable lists." }
 ];
 
 const products = [
@@ -189,7 +196,7 @@ function HomePage({ cartCount, offers, onOpenCart }) {
               <Link to="/contact">Visit store</Link>
             </div>
           </div>
-          <img src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=1400&q=88" alt="Fresh vegetables in baskets" />
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1400&q=88" alt="Fresh vegetables arranged in a local grocery display" />
         </section>
 
         <section className="wide-shell">
@@ -212,15 +219,27 @@ function HomePage({ cartCount, offers, onOpenCart }) {
           </div>
         </section>
 
-        <section className="wide-shell promise-grid">
-          <article><strong>Harvest Direct</strong><span>Organic products can be sourced directly from trusted growers and explained clearly on the products page.</span></article>
-          <article><strong>Quality Checked</strong><span>Every basket can be checked before billing and packing.</span></article>
-          <article><strong>Fair Billing</strong><span>Final amount is confirmed by exact weight and daily rate.</span></article>
-          <article><strong>Local Support</strong><span>Call or WhatsApp F3 directly for urgent orders.</span></article>
+        <section className="wide-shell store-process">
+          <div className="process-photo">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=88" alt="Fresh vegetable store counter" />
+            <div><strong>Fresh . Fine . Fair</strong><span>Sorted with the care of a local Karur vegetable shop.</span></div>
+          </div>
+          <div className="process-content">
+            <p>Why customers choose F3</p>
+            <h2>Built like a clean neighbourhood supermarket, run like a trusted local shop.</h2>
+            <div className="process-steps">
+              {storeSteps.map((step) => (
+                <article key={step.code}>
+                  <strong>{step.code}</strong>
+                  <div><h3>{step.title}</h3><span>{step.text}</span></div>
+                </article>
+              ))}
+            </div>
+          </div>
         </section>
 
         <section className="wide-shell">
-          <div className="section-title"><div><p>Explore by category</p><h2>Shop F3 aisles</h2></div></div>
+          <div className="section-title"><div><p>Shop by section</p><h2>Fresh varieties at F3</h2></div></div>
           <div className="category-showcase">
             {categories.map((category) => (
               <Link className="category-round" to={`/products?category=${encodeURIComponent(category.name)}`} key={category.name}>
